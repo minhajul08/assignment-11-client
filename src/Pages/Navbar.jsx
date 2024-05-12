@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProviders";
 
-
 const Navbar = () => {
     const {user,logout} = useContext (AuthContext);
     const handelLogout = () => {
@@ -35,9 +34,9 @@ const Navbar = () => {
                       {navLinks}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">daisyUI</a>
+                <a className="btn btn-ghost text-xl">Hotel Master</a>
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                  {navLinks}
                 </ul>
