@@ -1,4 +1,4 @@
-const Slide = ({image}) => {
+const Slide = ({image,text}) => {
     return (
       <div
         className='w-full bg-center bg-cover h-[38rem]'
@@ -9,7 +9,7 @@ const Slide = ({image}) => {
         <div className='flex items-center justify-center w-full h-full bg-gray-900/70'>
           <div className='text-center space-y-5'>
             <h1 className='text-3xl font-semibold text-[#bdac62] uppercase lg:text-7xl'>
-            Luxury hotel
+            {text}
             </h1> 
             <p className="text-white lg:mx-80">The Luxury hotel hotel master is one of the best stylish hotels in madrid.This modern take on the traditional alpine lodge is located at the foot of the spain
             </p>

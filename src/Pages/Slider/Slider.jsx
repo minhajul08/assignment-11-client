@@ -33,9 +33,19 @@ export default function Slider() {
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-        <SwiperSlide><Slide image={img1}/></SwiperSlide>
-        <SwiperSlide><Slide image={img2} /></SwiperSlide>
-        <SwiperSlide><Slide image={img3} /></SwiperSlide>
+        <SwiperSlide><Slide 
+        image={img1}
+        text={"Luxury Hotel"}
+        />
+        </SwiperSlide>
+        <SwiperSlide><Slide 
+        image={img2}
+        text={"A Private Enclave Of Luxury"}
+         /></SwiperSlide>
+        <SwiperSlide><Slide 
+        image={img3} 
+        text={"Freshness"}
+        /></SwiperSlide>
         
       </Swiper>
     </div>
