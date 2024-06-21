@@ -12,8 +12,8 @@ const Navbar = () => {
       <div className='navbar bg-base-100 shadow-sm container px-4 mx-auto'>
         <div className='flex-1'>
           <Link to='/' className='flex gap-2 items-center'>
-            <img className='w-auto h-20' src={logo} alt='' />
-            <span className='font-bold text-3xl'>Grand Hotel</span>
+            <img className='w-auto h-10 lg:h-20' src={logo} alt='' />
+            <span className='font-bold lg:text-3xl text-[#f8642e]'>Grand Hotel</span>
           </Link>
         </div>
         <div className='flex-none'>

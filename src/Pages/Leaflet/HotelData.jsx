@@ -7,7 +7,7 @@ const HotelData = () => {
             <p className="text-xl">Check in: 3:00 PM | Check out: 12:00 PM</p>
             <p className="pb-5">*Minimum check in age is: 18</p>
             <p>Contact Front Desk: +880 2 55663030</p>
-            <p>Email: dhaka@intercontinental-dhaka.com</p>
+            <p>Email: Sylhet@grand-hotel.com</p>
         </div>
     );
 };

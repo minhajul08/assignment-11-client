@@ -1,0 +1,33 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import RoomCard from "./RoomCard";
+
+
+const Room = () => {
+    const [rooms,setRooms] = useState ([])
+
+    useEffect ( () => {
+        const getData = async () => {
+            const {data} = await axios (`http://localhost:5000/rooms`)
+            setRooms (data)
+            console.log ('madari data' ,data)
+          }
+          getData ();
+    } ,[])
+    return (
+        <div>
+            <div className="text-center">
+            <p className="text-[#bdac62] tracking-normal text-lg">Conscious hospitality</p>
+            <h1 className="text-5xl tracking-widest ">ROOMS & SUITS</h1>
+            <hr className="w-40 h-[2px] mt-5 bg-[#bdac62] mx-auto"></hr>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10 gap-5">
+               {
+                rooms.map(room => <RoomCard key={room._id} room={room}></RoomCard>)
+               }
+            </div>
+        </div>
+    );
+};
+
+export default Room;

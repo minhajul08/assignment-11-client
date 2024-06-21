@@ -1,6 +1,8 @@
 
 import HotelData from "./Leaflet/HotelData";
 import HotelLocation from "./Leaflet/HotelLocation";
+import NewsLetter from "./NewsLetter";
+import Room from "./Room";
 import Slider from "./Slider/Slider";
 
 const Home = () => {
@@ -11,6 +13,8 @@ const Home = () => {
             <HotelLocation></HotelLocation>
              <HotelData></HotelData>
             </div>
+            <NewsLetter></NewsLetter>
+            <Room></Room>
         </div>
     );
 };
