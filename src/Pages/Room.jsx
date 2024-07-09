@@ -1,19 +1,24 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import RoomCard from "./RoomCard";
+import RoomCard from "./RoomCard/RoomCard";
 
 
 const Room = () => {
     const [rooms,setRooms] = useState ([])
 
-    useEffect ( () => {
+    useEffect(() => {
         const getData = async () => {
-            const {data} = await axios (`http://localhost:5000/rooms`)
-            setRooms (data)
-            console.log ('madari data' ,data)
-          }
-          getData ();
-    } ,[])
+            try {
+                const { data } = await axios('http://localhost:5000/rooms');
+                const limitedData = data.slice(0, 3);
+                setRooms(limitedData);
+            } catch (error) {
+                console.error('Error fetching data', error);
+            }
+        };
+
+        getData();
+    }, []);
     return (
         <div>
             <div className="text-center">

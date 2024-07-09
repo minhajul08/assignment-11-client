@@ -21,7 +21,14 @@ const Navbar = () => {
             <li>
               <Link to='/'>Home</Link>
             </li>
-  
+            <li>
+                <Link to='/room'>Rooms</Link>
+               </li>
+               {user && (
+                <li>
+                  <Link to='/'>Booking</Link>
+                </li>
+               )}
           {!user && (
               <li>
               <Link to='/login'>Login</Link>
@@ -48,18 +55,6 @@ const Navbar = () => {
                tabIndex={0}
                className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
              >
-               <li>
-                <Link to='/addJob'>Add Jobs</Link>
-               </li>
-               <li>
-                 <Link to='/myPostedJobs'>My Posted Jobs</Link>
-               </li>
-               <li>
-                 <Link to='/MyBids'>My Bids</Link>
-               </li>
-               <li>
-                 <Link to='/bidRequest'>Bid Requests</Link>
-               </li>
                <li className='mt-2'>
                  <button onClick={logout} className='bg-gray-200 block text-center'>Logout</button>
                </li>

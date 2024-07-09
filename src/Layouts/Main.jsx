@@ -5,9 +5,11 @@ import Footer from "../Pages/Footer";
 
 const Main = () => {
     return (
-        <div className="mx-10">
+        <div> 
+            <div className="mx-10">
             <Navbar></Navbar>
             <Outlet></Outlet>
+            </div>
             <Footer></Footer>
         </div>
     );

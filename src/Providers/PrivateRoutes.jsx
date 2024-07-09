@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AuthContext } from "../Provider/AuthProvider";
+import { AuthContext } from "../Providers/AuthProviders";
 import { Navigate, useLocation } from "react-router-dom";
 import { FadeLoader } from "react-spinners";
 
@@ -13,6 +13,6 @@ const PrivateRoutes = ({children}) => {
      if (user) {
          return children;
      }
-     return <Navigate state={location.pathname} to="/ login"></Navigate>
+     return <Navigate to='/login' state={location.pathname} replace={true}></Navigate>
  };
 export default PrivateRoutes;

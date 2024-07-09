@@ -1,0 +1,52 @@
+/* RoomCard.css */
+.room-card-container {
+    position: relative;
+    display: inline-block;
+}
+
+.room-card {
+    position: relative;
+    padding: 10px; 
+    background-color: white;
+
+}
+
+.image-wrapper {
+    position: relative;
+    overflow: hidden; 
+
+}
+
+.room-image {
+    display: block;
+    width: 100%; 
+    height: auto; 
+}
+
+.hover-text {
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; 
+}
+
+.image-wrapper:hover .hover-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+.hover-text span {
+    display: block;
+}
+

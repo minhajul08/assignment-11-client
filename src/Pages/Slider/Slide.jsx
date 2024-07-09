@@ -13,9 +13,7 @@ const Slide = ({image,text}) => {
             </h1> 
             <p className="text-white lg:mx-80">The Luxury hotel hotel master is one of the best stylish hotels in madrid.This modern take on the traditional alpine lodge is located at the foot of the spain
             </p>
-             <button className='w-full px-5 py-4 mt-4 text-sm font-medium  capitalize transition-colors duration-300 transform bg-[#bdac62]  text-white rounded-md lg:w-auto hover:bg-gray-500 focus:outline-none focus:bg-gray-500'>
-              Post Job & Hire Expert
-            </button>
+            <button className='p-2   bg-[#bdac62] hover:bg-white hover:text-gray-500 text-white font-bold py-2 px-4 rounded'>Details</button>
           </div>
         </div>
       </div>
