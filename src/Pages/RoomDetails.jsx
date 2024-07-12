@@ -1,15 +1,17 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useContext, useState } from "react";
 import { BsTextareaResize } from "react-icons/bs";
 import { AuthContext } from "../Providers/AuthProviders";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 
 const RoomDetails = () => {
     const {user} = useContext (AuthContext)
     const rooms = useLoaderData ()
+    const navigate = useNavigate ();
     const [startDate, setStartDate] = useState(new Date());
     const {_id,
         price_per_night,
@@ -20,12 +22,30 @@ const RoomDetails = () => {
          available  
 
         } = rooms;
-    const handelButton = async e => {
-        e.preventDefault ();
+    const handelButton = ()  => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You booking this room!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, confirm it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                const { data } =  axios.post('http://localhost:5000/booking', booking);
+                navigate ('/booking')
+              Swal.fire({
+                title: "Confirm!",
+                text: "Your room has been booked.",
+                icon: "success"
+              });
+            }
+          });
          const bookingDate = booking_date;
          const available = 'available'
          const email =user?.email;
-         const photo = user?.photoURL
+         const photo = image
 
         const booking = {
             bookingDate,
@@ -33,12 +53,7 @@ const RoomDetails = () => {
             email,
             photo
         }
-        try {
-            const {data} = await axios.post ('http://localhost:5000/booking', booking)
-            console.log (data)
-        } catch (error) {
-            console.log (error)
-        }
+        
     }
     
     return (

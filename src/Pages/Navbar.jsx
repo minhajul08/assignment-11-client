@@ -26,7 +26,7 @@ const Navbar = () => {
                </li>
                {user && (
                 <li>
-                  <Link to='/'>Booking</Link>
+                  <Link to='/booking'>Booking</Link>
                 </li>
                )}
           {!user && (

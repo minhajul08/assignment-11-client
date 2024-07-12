@@ -7,6 +7,7 @@ import ErrorPage from "../Pages/ErrorPage";
 import RoomDetails from "../Pages/RoomDetails";
 import PrivateRoutes from "../Providers/PrivateRoutes";
 import Booking from "../Pages/Booking";
+import HotelBooking from "../Pages/HotelBooking";
 
 const router = createBrowserRouter([
     {
@@ -38,6 +39,12 @@ const router = createBrowserRouter([
           path: '/room',
           element: <Booking></Booking>,
           // loader: fetch ('http://localhost:5000/rooms')
+        },
+        {
+          path: '/booking',
+          element: <PrivateRoutes>
+            <HotelBooking></HotelBooking>
+          </PrivateRoutes>
         }
       ]
     },
