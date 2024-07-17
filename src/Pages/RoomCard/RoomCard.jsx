@@ -19,7 +19,7 @@ const RoomCard = ({ room }) => {
             <div className='text-center mt-5'>
                 
                 {/* <hr className='w-52 h-[2px] mx-auto bg-[#bdac62]'></hr> */}
-                <p className='text-gray-500 mx-10'> {room_description} </p>
+                <p className='text-gray-500 mx-10'> {room_description.substring(0,100)} </p>
                 <Link to={`/room/${_id}`}><p className='btn-link text-[#bdac62] mt-5 hover:text-black'>Check Details</p></Link>
             </div>
         </div>

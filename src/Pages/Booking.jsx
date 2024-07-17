@@ -31,7 +31,7 @@ const Booking = () => {
                           <div className='text-center mt-5'>
                               
                               
-                              <p className='text-gray-500 mx-10'> {room.room_description} </p>
+                              <p className='text-gray-500 mx-10'> {room.room_description.substring(0,100)} </p>
                               <Link to={`/room/${room._id}`}><p className='btn-link text-[#bdac62] mt-5 hover:text-black'>Check Details</p></Link>
                           </div>
                       </div>)

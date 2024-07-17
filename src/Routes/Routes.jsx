@@ -8,6 +8,7 @@ import RoomDetails from "../Pages/RoomDetails";
 import PrivateRoutes from "../Providers/PrivateRoutes";
 import Booking from "../Pages/Booking";
 import HotelBooking from "../Pages/HotelBooking";
+import UpdateDate from "../Pages/UpdateDate";
 
 const router = createBrowserRouter([
     {
@@ -36,6 +37,12 @@ const router = createBrowserRouter([
           loader: ({params}) => fetch (`http://localhost:5000/room/${params.id}`)
         },
         {
+          path: '/updateDate/:id',
+          element: <UpdateDate></UpdateDate>,
+          // loader: ({params}) => fetch (`http://localhost:5000/room/${params.id}`)
+        },
+    
+        {
           path: '/room',
           element: <Booking></Booking>,
           // loader: fetch ('http://localhost:5000/rooms')
@@ -45,7 +52,7 @@ const router = createBrowserRouter([
           element: <PrivateRoutes>
             <HotelBooking></HotelBooking>
           </PrivateRoutes>
-        }
+        },
       ]
     },
   ]);
