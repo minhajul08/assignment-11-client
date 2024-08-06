@@ -2,31 +2,46 @@ import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProviders";
 import { Link,  useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import swal from "sweetalert";
+import axios from "axios";
+import swal from 'sweetalert';
 
 
 const Login = () => {
   const {signIn,googleLogin} = useContext (AuthContext)
   const navigate = useNavigate();
   console.log("location in the login page", location)
-    const handelLogin = e => {
+    const handelLogin = async e => {
         e.preventDefault ();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        const logIn = {
-            email,
-            password
+        // const logIn = {
+        //     email,
+        //     password
+        // }
+        console.log (email,password)
+        try {
+          // User Login
+          const result = await signIn (email,password)
+          console.log (result.user)
+          const { data } = axios.post(
+                  `https://grandhotel-three.vercel.app/jwt`,
+                  {
+                    email: result?.user?.email,
+                  },
+                  { withCredentials: true }
+                )
+                console.log('what is this',data)
+                swal({
+                  title: "Done",
+                  text: "You hae successfully logged in",
+                  icon: "success",
+                  dangerMode: true,
+                })
+                navigate (location?.state ? location.state : '/')
+        } catch (error) {
+          console.log (error)
         }
-        console.log (logIn)
-        signIn (email,password)
-        .then (result => {
-            console.log (result.user)
-            navigate(location?.state ? location.state : '/')
-        })
-        .catch (error => {
-            console.log (error)
-        })
     }
 
       // google signIn
@@ -34,7 +49,16 @@ const Login = () => {
       //---- google sign in -------
    const handleGoogleSignIn = async () => {
     try {
-      await googleLogin()
+     const result = await googleLogin()
+     console.log (result.user)
+     const { data } = await axios.post(
+      `https://grandhotel-three.vercel.app/jwt`,
+      {
+        email: result?.user?.email,
+      },
+      { withCredentials: true }
+    )
+    console.log(data)
       swal({
         title: "Done",
         text: "You hae successfully logged in",

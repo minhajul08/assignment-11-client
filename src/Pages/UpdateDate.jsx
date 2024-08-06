@@ -17,16 +17,14 @@ const UpdateDate = () => {
 
   const getData = async () => {
     if (user) {
-      const { data } = await axios.get(`http://localhost:5000/booking/${user.email}`);
+      const { data } = await axios.get(`https://grandhotel-three.vercel.app/booking/${user.email}`);
       setBookings(data);
-      console.log(data);
     }
   };
 
   const handleUpdateDate = async (id) => {
     try {
-      const response = await axios.patch(`http://localhost:5000/updateDate/${id}`, {
-        bookingDate: startDate
+      const response = await axios.patch(`https://grandhotel-three.vercel.app/updateDate/${id}`, {bookingDate: startDate
       });
       if (response.data.modifiedCount > 0) {
         Swal.fire({
@@ -43,23 +41,23 @@ const UpdateDate = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen text-center">
       <div className="space-y-3">
         <div>CHECK-IN:
-          <p className="mt-2">
+          <div className="mt-2">
             <DatePicker
-              className="border p-2 rounded-md"
+              className="border p-2 rounded-md text-center"
               selected={startDate}
               onChange={(date) => setStartDate(date)}
               minDate={new Date()}
             />
-          </p>
+          </div>
         </div>
         {bookings.map((booking) => (
           <div key={booking._id} className="flex items-center space-x-4">
             <button
               onClick={() => handleUpdateDate(booking._id)}
-              className="bg-[#bdac62] hover:bg-[#d8cd9a] hover:text-gray-500 text-white font-bold py-2 px-4 rounded"
+              className="bg-[#bdac62] hover:bg-[#d8cd9a] hover:text-gray-500 text-white font-bold py-2 px-4 rounded mx-auto"
             >
               Update Booking Date
             </button>

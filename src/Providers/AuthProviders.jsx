@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import {  GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import app from "../firebase/firebase.config";
+import axios from "axios";
 const auth = getAuth(app);
 export const AuthContext = createContext ();
 const googleProvider = new GoogleAuthProvider();
@@ -16,15 +17,17 @@ const AuthProviders = ({children}) => {
         return createUserWithEmailAndPassword (auth,email,password)
     }
 
-    const signIn = (email,password) => {
+    const signIn = async (email,password) => {
         setLoading (true)
         return signInWithEmailAndPassword (auth,email,password)
     }
 
     // logout
 
-    const logout = () => {
+    const logout =  async () => {
         setLoading (true)
+        const {data} = await axios (`https://grandhotel-three.vercel.app/logout`, {withCredentials: true})
+        console.log (data)
         return signOut (auth);
     }
 

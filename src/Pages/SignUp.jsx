@@ -1,29 +1,42 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProviders";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import swal from 'sweetalert';
 
 const SignUp = () => {
+  const navigate = useNavigate ();
     const {createUser} = useContext (AuthContext)
 
-    const handelRegister = e => {
+    const handelRegister = async e => {
         e.preventDefault ();
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        const logIn = {
-            name,
-            email,
-            password
+        console.log (name,email,password);
+        try {
+          // User Login
+          const result = await createUser (email,password)
+          console.log (result.user)
+          const { data } = axios.post(
+                  `https://grandhotel-three.vercel.app/jwt`,
+                  {
+                    email: result?.user?.email,
+                  },
+                  { withCredentials: true }
+                )
+                console.log('what is this',data)
+                swal({
+                  title: "Done",
+                  text: "You hae successfully logged in",
+                  icon: "success",
+                  dangerMode: true,
+                })
+                navigate (location?.state ? location.state : '/')
+        } catch (error) {
+          console.log (error)
         }
-        console.log (logIn);
-        createUser (email,password)
-        .then (result => {
-            console.log (result.user)
-        })
-        .catch (error => {
-            console.log (error)
-        })
     }
     return (
         <div className="hero min-h-screen  bg-base-200">

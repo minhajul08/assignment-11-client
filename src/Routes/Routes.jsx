@@ -34,18 +34,16 @@ const router = createBrowserRouter([
             <RoomDetails></RoomDetails>
           </PrivateRoutes>,
        
-          loader: ({params}) => fetch (`http://localhost:5000/room/${params.id}`)
+          loader: ({params}) => fetch (`https://grandhotel-three.vercel.app/room/${params.id}`)
         },
         {
           path: '/updateDate/:id',
           element: <UpdateDate></UpdateDate>,
-          // loader: ({params}) => fetch (`http://localhost:5000/room/${params.id}`)
         },
     
         {
           path: '/room',
           element: <Booking></Booking>,
-          // loader: fetch ('http://localhost:5000/rooms')
         },
         {
           path: '/booking',

@@ -39,7 +39,7 @@ const RoomDetails = () => {
         };
 
         try {
-          await axios.post('http://localhost:5000/booking', booking);
+          await axios.post(`https://grandhotel-three.vercel.app/booking`, booking);
 
           Swal.fire({
             title: "Confirmed!",

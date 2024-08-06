@@ -14,7 +14,7 @@ const HotelBooking = () => {
 
   const getData = async () => {
     if (user) {
-      const { data } = await axios.get(`http://localhost:5000/booking/${user.email}`);
+      const { data } = await axios.get(`https://grandhotel-three.vercel.app/booking/${user.email}`, {withCredentials: true});
       setBookings(data);
     }
   };
@@ -31,7 +31,7 @@ const HotelBooking = () => {
         confirmButtonText: "Yes, cancel it!"
       }).then(async (result) => {
         if (result.isConfirmed) {
-          await axios.delete(`http://localhost:5000/booking/${id}`);
+          await axios.delete(`https://grandhotel-three.vercel.app/booking/${id}`);
           setBookings(bookings.filter(booking => booking._id !== id));
 
           Swal.fire({
@@ -47,11 +47,11 @@ const HotelBooking = () => {
   };
 
   return (
-    <div className="min-h-screen">
-      <h1 className="text-5xl text-center font-semibold mb-1 ">
+    <div className="lg:min-h-screen">
+      <h1 className="text-5xl text-center font-semibold mb-1">
         <span className="text-[#bdac62]">Booking</span> Room
       </h1>
-      <hr className="w-60 h-[2px] mt-5 mb-8 bg-[#bdac62] mx-auto"></hr>
+      <hr className="w-60 h-[2px] mt-5 mb-8 bg-[#bdac62] mx-auto" />
       <div className="overflow-x-auto">
         <table className="table text-xl">
           {/* head */}
@@ -63,41 +63,40 @@ const HotelBooking = () => {
               <th></th>
             </tr>
           </thead>
-          {bookings.map(booking => (
-            <tbody key={booking._id}>
-              <tr>
+          <tbody>
+            {bookings.map((booking) => (
+              <tr key={booking._id}>
                 <td>
                   <div className="flex items-center gap-3">
                     <div className="avatar">
                       <div className="w-24 rounded">
-                        <img
-                          src={booking.photo}
-                          alt="Avatar Tailwind CSS Component" />
+                        <img src={booking.photo} alt="Room" />
                       </div>
                     </div>
                   </div>
                 </td>
                 <td title={booking.email}>
-                  {booking.email.substring(0,20)}...
+                  {booking.email.substring(0, 20)}...
                 </td>
+                <td>{new Date(booking.bookingDate).toLocaleDateString()}</td>
                 <td>
-                {new Date(booking.bookingDate).toLocaleDateString()}
-                </td>
-                <td>
-                  <button onClick={() => handleDelete(booking._id)} className="btn p-2 bg-[#bdac62] text-white hover:text-gray-500 font-bold py-2 px-4 rounded ">
-                   Cancel
+                  <button
+                    onClick={() => handleDelete(booking._id)}
+                    className="btn p-2 bg-[#bdac62] text-white hover:text-gray-500 font-bold py-2 px-4 rounded"
+                  >
+                    Cancel
                   </button>
                 </td>
-                <th>
-                  <td>
+                <td>
                   <Link to={`/updateDate/${booking._id}`}>
-                  <button className='btn p-2 bg-[#bdac62] text-white hover:text-gray-500 font-bold py-2 px-4 rounded'>Update Date</button>
+                    <button className="btn p-2 bg-[#bdac62] text-white hover:text-gray-500 font-bold py-2 px-4 rounded">
+                      Update Date
+                    </button>
                   </Link>
-                  </td>
-                </th>
+                </td>
               </tr>
-            </tbody>
-          ))}
+            ))}
+          </tbody>
         </table>
       </div>
     </div>

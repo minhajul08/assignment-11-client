@@ -8,7 +8,7 @@ const Booking = () => {
 
     useEffect (() => {
       const getData = async () => {
-        const {data} = await axios (`http://localhost:5000/rooms`)
+        const {data} = await axios (`https://grandhotel-three.vercel.app/rooms`)
         setRooms (data)
       }
       getData ();
