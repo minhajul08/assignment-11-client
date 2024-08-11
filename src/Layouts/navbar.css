@@ -1,0 +1,6 @@
+.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure it stays on top */
+    background-color: white; /* Add background to avoid content showing behind */
+}

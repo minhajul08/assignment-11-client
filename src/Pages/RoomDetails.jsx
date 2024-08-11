@@ -17,7 +17,6 @@ const RoomDetails = () => {
     image,
     room_description,
     room_size,
-    available
   } = rooms;
 
   const handelButton = () => {
@@ -33,7 +32,6 @@ const RoomDetails = () => {
       if (result.isConfirmed) {
         const booking = {
           bookingDate: startDate,
-          available: 'available',
           email: user?.email,
           photo: image
         };
@@ -66,12 +64,12 @@ const RoomDetails = () => {
   return (
     <div className="">
       <img className="w-full" src={image} alt="" />
-      <div className="my-12 flex justify-between">
+      <div className="my-12 lg:flex justify-between">
         <div className="space-y-5">
           <p className="text-3xl">From ${price_per_night}</p>
           <div className="flex gap-5">
             <p className="flex items-center gap-3"><BsTextareaResize /> {room_size}</p>
-            <p className="bg-[#f8642e] text-white font-bold py-2 px-4 rounded">{available}</p>
+           
           </div>
           <p className="leading-loose">{room_description}</p>
         </div>

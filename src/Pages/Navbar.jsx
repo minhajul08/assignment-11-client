@@ -9,7 +9,7 @@ import { useContext } from "react"
 const Navbar = () => {
     const {user,logout} = useContext (AuthContext)
     return (
-      <div className='navbar bg-base-100 shadow-sm container px-4 mx-auto'>
+      <div className='navbar bg-base-100 shadow-sm container px-1 mx-auto'>
         <div className='flex-1'>
           <Link to='/' className='flex gap-2 items-center'>
             <img className='w-auto h-10 lg:h-20' src={logo} alt='' />
